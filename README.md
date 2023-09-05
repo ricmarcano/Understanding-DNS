@@ -4,7 +4,7 @@
 
 <h1>Understanding DNS</h1>
 
-This lab centers on exploring DNS and its practical application. DNS is a crucial IT concept that converts computer names such as (google.com) to IP addresses which can be used by the computer to locate resources. In this lab, we'll set up DNS records to observe how it operates. This builds upon a prior lab where I had a client connected to my domain, testdomain.com. I'm logged in as Rick James, an admin, on both the client and domain controller VMs. To ensure the lab functions correctly, it's essential to be logged in as an administrator.
+This lab centers on exploring DNS (Domain Name System) and its practical application. DNS is a crucial IT concept that converts computer names such as "google.com" to IP addresses which can be used by the computer to locate resources. In this lab, we'll set up DNS records to observe how it operates. This builds upon a prior lab where I had a client connected to my domain, testdomain.com. I'm logged in as Rick James, an admin, on both the client and domain controller VMs. To ensure the lab functions correctly, it's essential to be logged in as an administrator.
 
 <h2>Technologies and Enviroments Used</h2>
 
@@ -30,3 +30,11 @@ Next we'll explore the DNS cache. I made a change on the domain controller by up
 
 ![image](https://github.com/ricmarcano/Understanding-DNS/assets/141169092/b24fd164-2786-41f6-88af-848191255323)
 ![image](https://github.com/ricmarcano/Understanding-DNS/assets/141169092/5c4330ab-f2eb-416b-ae1f-f78519aaae57)
+![image](https://github.com/ricmarcano/Understanding-DNS/assets/141169092/2548b2f7-79bf-4a2d-ae52-8304f4b40ccc)
+
+Now, we'll create a CNAME (Canonical Name) record on the DNS server to link "search" to Google. CNAME is a type of DNS record that maps an alias name to a true or canonical domain name. CNAME records are typically used to map a subdomain such as "www" or "mail" to the domain hosting that subdomain's content. On the Forward Lookup Zones tab, find your domain and create a new CNAME record named "search" that points to Google. Refresh the server to save these changes. On the client, when you ping "search" or use nslookup, you'll get the results from the CNAME record.
+
+![image](https://github.com/ricmarcano/Understanding-DNS/assets/141169092/609dd5f7-8a52-4f9d-b135-1bbfd78ddf00)
+![image](https://github.com/ricmarcano/Understanding-DNS/assets/141169092/d4a88822-1e93-4fdc-8e2f-691c333ea314)
+
+This lab showcased how DNS works on computers and networks. It emphasized the importance of keeping DNS records updated to avoid connection problems. The "ipconfig /flushdns" command, a common IT troubleshooting tool, became clearer after doing this lab. We started by pinging "mainframe," the computer first checked its DNS cache. If no answer was found there, it looked in the host file. Only if both of these didn't provide an answer did it turn to the DNS server. By setting up a record on the DNS server, we ensured that pinging "mainframe" worked correctly. We also learned about CNAME records, which link one name to another. In our case, "search" was linked to Google.
